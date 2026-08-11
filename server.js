@@ -20,4 +20,15 @@ console.log("i live in ",city)
 console.log(typeof document);
 console.log(typeof process);
 
+const cal= require("./math")
+console.log(cal.add(7,5))
+console.log(cal.sub(7,5))
+const getdata=require("./math")
+console.log(getdata.getname("mohsin"))
+console.log(getdata.getage(22))
+console.log(getdata.getgrade("A"))
+const store=require("./math")
+console.log(store.getproductname("MAC BOOK"))
+console.log(store.getprice(`$ ${1200}`))
+console.log(store.isAvailable())
 
