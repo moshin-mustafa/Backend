@@ -106,3 +106,58 @@ and:
 undefined
 undefined
 object
+
+
+
+The basic comparison
+CommonJS	ESM
+require()	import
+module.exports	export
+Older Node.js style	Modern JavaScript standard
+Very common in older Node projects	Common in modern Node projects
+
+
+But how does Node know which one we're using?
+
+This is where package.json becomes important again.
+
+By default, Node treats .js files as CommonJS in a typical project.
+
+If you want your .js files to use ESM, you can put this in package.json:
+
+{
+  "type": "module"
+}
+
+Now Node interprets .js files as ESM.
+
+For example:
+
+Backend/
+│
+├── package.json
+│
+└── math.js
+
+package.json:
+
+{
+  "type": "module"
+}
+
+Then:
+
+// math.js
+
+export function add(a, b) {
+    return a + b;
+}
+
+and:
+
+// server.js
+
+import { add } from "./math.js";
+
+console.log(add(5, 3));
+![alt text](image.png)
