@@ -161,3 +161,28 @@ import { add } from "./math.js";
 
 console.log(add(5, 3));
 ![alt text](image.png)
+
+
+Exercise:1 the solution is in main.js in the Working_with_fs_module_path folder
+start
+ending
+File written
+File appended
+hello my name is mohsin i am writing my fs file
+hello
+
+Challenge 2 — fs Module
+
+Your program should produce exactly this output:
+
+Starting
+Program started
+File created
+First message added
+Second message added
+Reading file...
+Hello from Node.js
+I am learning the fs module
+This is my second exercise
+Program finished
+solution is in the same place as Exercise:1 

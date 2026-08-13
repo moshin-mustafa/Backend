@@ -1,0 +1,3 @@
+Hello from Node.js
+I am learning the fs module
+This is my second exercise
