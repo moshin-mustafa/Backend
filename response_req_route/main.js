@@ -1,6 +1,7 @@
 const express= require("express")
 const app = express()
 const port = 3000
+app.use(express.static('public'));
 let x = {
     "name": "Mohsin",
     "age": 22
@@ -10,14 +11,15 @@ app.get('/',(res,req)=>{
 })
 app.get('/user',(res,req)=>{
 
-    req.send("these are the users")
+    req.send("these are the users") 
     
 })
 app.post('/user',(res,req)=>{
     // return "These are the  "
     req.send("user recevied")
-    // console.log(req.body);
-    // app.x(express.json())
+    console.log("hello i am a post")
+    // console.log(req.x);
+    // app.use(express.json())
     // console.log(app.x)
 // console.log()
 
