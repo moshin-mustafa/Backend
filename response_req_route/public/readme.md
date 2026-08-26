@@ -130,3 +130,128 @@ URL          Method       Route that runs
 **Same URL, different method = different route.**
 
 This distinction is one of the most important things to understand about Express. Once this clicks, GET/POST will make much more sense.
+
+
+
+Express receive a POST request at /.
+
+What changes when you put it early is which middleware gets a chance to handle the request first.
+
+Suppose you have:
+
+app.use(express.static("public"))
+
+app.get("/", (req, res) => {
+    res.send("welcome to the Registration API")
+})
+
+and your public folder contains:
+
+public/
+└── index.html
+
+When you visit:
+
+http://localhost:3000/
+
+Express processes requests from top to bottom.
+
+What happens
+
+First Express reaches:
+
+app.use(express.static("public"))
+
+express.static() asks:
+
+"Is there a file in public that matches this URL?"
+
+For /, Express looks for the default file:
+
+public/index.html
+
+If it exists, Express sends that file.
+
+So this route:
+
+app.get("/", ...)
+
+may never run, because the static middleware already handled the request.
+
+But what about POST /?
+
+Here's the important part:
+
+app.use(express.static("public"))
+
+is primarily for serving static files. A POST request is not normally satisfied by the static file middleware, so Express continues to the next middleware/route.
+
+For example:
+
+app.use(express.static("public"))
+
+app.post("/", (req, res) => {
+    console.log("POST received")
+    res.send("done")
+})
+
+A:
+
+POST /
+
+can reach:
+
+app.post("/")
+
+because the static middleware doesn't handle it as a static file request.
+
+Why it seemed like your POST was going to /
+
+This is probably the part that confused you.
+
+Suppose your HTML is:
+
+<script src="script.js"></script>
+
+and script.js contains:
+
+fetch("/users", {
+    method: "POST",
+    ...
+})
+
+That request is still:
+
+POST /users
+
+express.static("public") does not change it to:
+
+POST /
+
+The only thing static middleware changes is how requests for static files are handled.
+
+Think of Express like this
+
+Express checks middleware in order:
+
+Request
+   ↓
+express.static("public")
+   ↓
+Did it find a static file?
+   ↓
+YES → send file → STOP
+NO
+   ↓
+next route/middleware
+   ↓
+app.get(...)
+app.post(...)
+
+So putting:
+
+app.use(express.static("public"))
+
+early can cause your / GET route to be skipped when public/index.html exists.
+
+It does not automatically turn requests into POST /
