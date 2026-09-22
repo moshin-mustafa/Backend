@@ -1,0 +1,1 @@
+jhan pr hum app.use(express.static('public')); ya likh dain gy u k baad ki chhezz ignore kr k wo direcit public folder pr jy ga unless wo specific route na ho

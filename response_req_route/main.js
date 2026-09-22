@@ -151,9 +151,9 @@ app.get(`/new`,(req,res)=>{
 app.get(`/index`,(req,res)=>{
     res.sendFile(`templetes/index.html`,{root:__dirname})
 })
-app.get(`/users`,(req,res)=>{
-res.sendFile(`public/index.html`,{root:__dirname})
-})
+// app.get(`/users`,(req,res)=>{
+// res.sendFile(`public/index.html`,{root:__dirname})
+// })
 app.post(`/users`,(req,res)=>{
     console.log(req.body)
 res.sendFile(`public/index.html`,{root:__dirname})

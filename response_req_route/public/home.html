@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>welcome</h2>
+    <!-- BELOW ARE THE 3 DIFF METHOD FOR REDIRECTING -->
+      <!-- <button onclick="location.href='/users'">
+        Go to Registration
+    </button> -->
+
+    <!-- <button><a href="/users">goto users</a></button> -->
+<!-- 
+     <a href="/users">
+    <button type="button">Go to Registration</button> -->
+    <script>
+        let k = document.createElement("button")
+k.innerText="click me"
+document.body.appendChild(k)
+
+k.addEventListener("click",()=>{
+    let y= document.createElement("a")
+    y.href="/users"
+       y.innerText = "Go to users"
+     y.click()
+})
+    </script>
+</a>
+</body>
+</html>
