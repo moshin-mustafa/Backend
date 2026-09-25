@@ -51,3 +51,4 @@ async function pract() {
     console.log(y)
 }
 pract()
+    

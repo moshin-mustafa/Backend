@@ -255,3 +255,7 @@ app.use(express.static("public"))
 early can cause your / GET route to be skipped when public/index.html exists.
 
 It does not automatically turn requests into POST /
+
+
+
+post req kamm sai karni chye ha /users pr isko ajj dekna ha

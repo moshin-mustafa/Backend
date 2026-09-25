@@ -139,7 +139,7 @@
 
 const express=require("express")
 const app =express()
-const port= 3000
+const port= 5500
 app.use(express.json())
  app.use(express.static("public"))
 app.get(`/`,(req,res)=>{
@@ -150,6 +150,9 @@ app.get(`/new`,(req,res)=>{
 })
 app.get(`/index`,(req,res)=>{
     res.sendFile(`templetes/index.html`,{root:__dirname})
+})
+app.get(`/indexx`,(req,res)=>{
+    res.sendFile(`public/home.html`,{root:__dirname})
 })
 // app.get(`/users`,(req,res)=>{
 // res.sendFile(`public/index.html`,{root:__dirname})

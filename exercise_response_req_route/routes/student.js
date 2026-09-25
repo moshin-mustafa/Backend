@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-const path = require("path");
-const { json } = require('stream/consumers');
+// const path = require("path");
+// const { json } = require('stream/consumers');
 // define the home page route
 // let x=["Ali",
 //     "Ahmed",
