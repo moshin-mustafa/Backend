@@ -3,7 +3,9 @@ import express from "express"
 
 const app = express()
 let port = 3000
-
+let x=[{
+    no0:"ali",no1:"ahmed"
+}]
 let mf = function (req,res,next) {
     console.log("Logged in")
     next()
@@ -19,7 +21,10 @@ app.get('/',(req,res)=>{
 })
 app.use(mf)// jasy e user about section ma jay ga ooged in ho jay ga
 app.get('/about',(req,res)=>{
-    res.send("i am about")
+    res.send(x)
+    console.log(req.query)
+
+    
 })
 app.use('/users',(req,res,next)=>{
     res.send("i am here for users")
