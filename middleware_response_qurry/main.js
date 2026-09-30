@@ -1,6 +1,10 @@
 import express from "express"
+import student from "./routes/students.js"
 
 const app = express();
+
+ app.use('/student',student)
+
 const port = 3000;
 let students=[{
     id:1,
@@ -21,37 +25,34 @@ city:"rwp"
 }  
 ]
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+  res.send(students);
 });
-app.use( (req, res ,next) => {
-        let found = false
-        let i =0
-        for( i = 0 ;i <students.length;i++){
+// app.get('/tt', (req, res) => {
+//     // res.send(students);
+// });
+app.use(express.json());
+app.use(express.static('public'));
+app.get('/tt', (req, res) => {
+    res.sendFile('index.html', { root: 'public' });
+});
 
 
-            if(req.query.city == students[i].city){
-                req.students=students[i]
-                found=true
-                console.log(req.query)
-                next()
-                break
-                
-            }
-                // res.send(students);
-            }
-            if (found==false){
-               console.log("invalid qurry")
-            //    res.send("inclaid qurry")
-            
-            }
-        
-    });
-
-app.get('/students',(req,res)=>{
-
-    res.json(req.students)
-})
-
+ app.post('/tt',(req,res)=>{
+     
+// console.log(req.body)
+    let y= req.body
+        // res.json(req.students)
+       let   stu={
+                    id:y.id,
+                    name:y.name,
+                    city:y.city
+        }
+        students.push(stu)
+        res.send(stu)
+        console.log(stu)
+    // res.sendFile(`public/index.html`,{root:__dirname})
+    })
+    
 
 
 app.listen(port, () => {
