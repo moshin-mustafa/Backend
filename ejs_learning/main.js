@@ -7,6 +7,10 @@ app.get('/', (req, res) => {
   res.sendFile(`./templetes/index.html`,{root:__dirname});
 // res.send("hello")
 });
+app.get('/about', (req, res) => {
+  res.sendFile(`./templetes/index.html`,{root:__dirname});
+// res.send("hello")
+});
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
