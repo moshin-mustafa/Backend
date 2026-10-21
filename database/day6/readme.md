@@ -2,6 +2,15 @@ https://chatgpt.com/share/6ad3e01b-bfcc-83ec-9914-25cebbffe6d8
 
 
 
+important concept demostration in this 
+Your /search route now demonstrates several important concepts:
+- Reading query parameters with req.query.
+- Validating required input.
+- Using parameterized queries with $1 and $2.
+- Returning 404 when no matching records are found.
+- Handling database errors with try...catch.
+
+
 
 
 
