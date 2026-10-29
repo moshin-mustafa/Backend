@@ -86,6 +86,47 @@ if (!name||name.trim() === ""|| !city||city.trim() === ""){
         res.status(500).json({ error: 'Database error' });
     }
 });
+
+app.post('/students', async (req, res) => {
+    const { name, city } = req.body;
+
+    if (!name || name.trim() === '' ||
+        !city || city.trim() === '') {
+        return res.status(400).json({
+            error: 'Name and city are required'
+        });
+    }
+
+    try {
+        const result = await pool.query(
+            `INSERT INTO students (name, city)
+             VALUES ($1, $2)
+             RETURNING *`,
+            [name.trim(), city.trim()]
+        );
+
+        res.status(201).json(result.rows[0]);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({
+            error: 'Database error'
+        });
+    }
+});
+app.get('/students', async (req, res) => {
+    try {
+        const result = await pool.query(
+            'SELECT * FROM students ORDER BY id'
+        );
+
+        res.status(200).json(result.rows);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({
+            error: 'Database error'
+        }); 
+    }
+});
 app.listen(3000, () => {
     console.log('Server running on port 3000');
 });
